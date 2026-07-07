@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://lotwuige1aee"]
+[gd_scene load_steps=15 format=3 uid="uid://lotwuige1aee"]
 
 [ext_resource type="Texture2D" uid="uid://nurflf6obqdk" path="res://sprites/comeback.png" id="1_in7yr"]
+[ext_resource type="Script" uid="uid://clpaed5fqnvd7" path="res://scenes/button.gd" id="2_irg28"]
 [ext_resource type="Shader" uid="uid://emokc5w342ey" path="res://codes/scroll.gdshader" id="2_tbwuq"]
+[ext_resource type="FontFile" uid="uid://dpclw5gxajjcd" path="res://sprites/KiwiSoda.ttf" id="3_2jtsn"]
 [ext_resource type="Texture2D" uid="uid://drgwcvy47drpp" path="res://Parallax/0.png" id="3_racf3"]
 [ext_resource type="Texture2D" uid="uid://v3qx581lg4on" path="res://sprites/close.png" id="4_7m3ot"]
 [ext_resource type="Script" uid="uid://cn4k1a7h8m1ey" path="res://scenes/comeback.gd" id="4_racf3"]
@@ -19,6 +21,42 @@ func _on_quit_pressed() -> void:
 	pass # Replace with function body.
 "
 
+[sub_resource type="Animation" id="Animation_v3hpu"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_irg28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jtsn"]
+_data = {
+&"RESET": SubResource("Animation_irg28"),
+&"fade_out": SubResource("Animation_v3hpu")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7m3ot"]
 shader = ExtResource("2_tbwuq")
 
@@ -29,10 +67,26 @@ texture = ExtResource("4_v3hpu")
 script = SubResource("GDScript_r3tew")
 
 [node name="Button" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 position = Vector2(464, 288)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("1_in7yr")
+script = ExtResource("2_irg28")
+
+[node name="Label" type="Label" parent="Button"]
+offset_left = -7.5
+offset_top = -18.0
+offset_right = 40.5
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("3_2jtsn")
+text = "RETRY"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button"]
+libraries = {
+&"": SubResource("AnimationLibrary_2jtsn")
+}
 
 [node name="pattern" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.11764706)
@@ -46,6 +100,7 @@ expand_mode = 2
 stretch_mode = 1
 
 [node name="quit" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 offset_left = 908.0
 offset_top = 509.0
@@ -56,6 +111,11 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_irg28")
 icon = ExtResource("4_7m3ot")
 flat = true
 script = ExtResource("4_racf3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="quit"]
+libraries = {
+&"": SubResource("AnimationLibrary_2jtsn")
+}
 
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="quit" to="quit" method="_on_pressed"]

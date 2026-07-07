@@ -148,4 +148,5 @@ func game_over():
 	get_tree().paused = true
 	game_running = false
 	$GameOver.show()
+	$GameOver/AnimationPlayer.play("fade_out")
 	$DefeatJingle.play()

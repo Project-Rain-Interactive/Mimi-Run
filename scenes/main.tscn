@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bju4jxwr7a0pg"]
+[gd_scene load_steps=13 format=3 uid="uid://bju4jxwr7a0pg"]
 
 [ext_resource type="Script" uid="uid://c32tujcq73qqh" path="res://codes/main.gd" id="1_d36gk"]
 [ext_resource type="PackedScene" uid="uid://bpkphu8qj137m" path="res://scenes/bg.tscn" id="1_qy3kl"]
@@ -10,6 +10,42 @@
 [ext_resource type="PackedScene" uid="uid://c1boja24bhl4n" path="res://touchscreen.tscn" id="8_m1afp"]
 [ext_resource type="AudioStream" uid="uid://52s08t84xb2d" path="res://sound/DefeatJingle.wav" id="9_85g3d"]
 
+[sub_resource type="Animation" id="Animation_v3hpu"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_irg28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2jtsn"]
+_data = {
+&"RESET": SubResource("Animation_irg28"),
+&"fade_out": SubResource("Animation_v3hpu")
+}
+
 [node name="Main" type="Node"]
 script = ExtResource("1_d36gk")
 
@@ -20,6 +56,9 @@ position = Vector2(0, 32)
 
 [node name="mimi" parent="." instance=ExtResource("3_l41lx")]
 position = Vector2(153, 489)
+
+[node name="AnimatedSprite2D" parent="mimi" index="0"]
+frame_progress = 0.84398437
 
 [node name="Camera2D" type="Camera2D" parent="mimi"]
 position = Vector2(212, -103.5)
@@ -34,6 +73,11 @@ position = Vector2(576, 324)
 
 [node name="GameOver" parent="." instance=ExtResource("6_6n2u1")]
 process_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+libraries = {
+&"": SubResource("AnimationLibrary_2jtsn")
+}
 
 [node name="Run" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_jw7ls")
