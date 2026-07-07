@@ -1,0 +1,217 @@
+[gd_scene load_steps=17 format=3 uid="uid://cjax57omio5tn"]
+
+[ext_resource type="Texture2D" uid="uid://brwvvyl1vecis" path="res://Parallax/0001.png" id="1_0fvxf"]
+[ext_resource type="Shader" uid="uid://cowbb8uif26rh" path="res://codes/scroll2.gdshader" id="1_m2jpk"]
+[ext_resource type="Texture2D" uid="uid://0dfwoanmbcqn" path="res://Parallax/clouds4.png" id="2_cyp6n"]
+[ext_resource type="Texture2D" uid="uid://rr6fvbdxqc2u" path="res://Parallax/clouds2.png" id="3_0fvxf"]
+[ext_resource type="Texture2D" uid="uid://3y2l433bpoma" path="res://Parallax/3.png" id="3_gwhif"]
+[ext_resource type="Texture2D" uid="uid://cmdoubplaa8bx" path="res://Parallax/3_2.png" id="4_hankl"]
+[ext_resource type="Texture2D" uid="uid://lsbusuoj6cas" path="res://Parallax/4.png" id="4_k3hl1"]
+[ext_resource type="Texture2D" uid="uid://dpet2yse78dgf" path="res://Parallax/clouds1.png" id="4_m2jpk"]
+[ext_resource type="Texture2D" uid="uid://dywwilm865wsy" path="res://Parallax/3_3.png" id="5_356xm"]
+[ext_resource type="Texture2D" uid="uid://duinl2fjjjkgr" path="res://Parallax/5.png" id="5_lvlno"]
+[ext_resource type="Texture2D" uid="uid://bmrek26vw56qn" path="res://Parallax/ParallaxSunset/Sunset/6.png" id="8_0fvxf"]
+[ext_resource type="Texture2D" uid="uid://dx0t5ounnuyim" path="res://Parallax/0002.png" id="9_8vcgh"]
+[ext_resource type="Shader" uid="uid://emokc5w342ey" path="res://codes/scroll.gdshader" id="10_yqga7"]
+[ext_resource type="Texture2D" uid="uid://os6uownygs3p" path="res://Parallax/2n2.png" id="11_0jpoy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2jpk"]
+shader = ExtResource("1_m2jpk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4vhb"]
+shader = ExtResource("10_yqga7")
+
+[node name="Node2D" type="CanvasLayer"]
+
+[node name="skybox" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="skybox"]
+position = Vector2(0, -120)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1248, 0)
+
+[node name="Logo" type="TextureRect" parent="skybox/ParallaxLayer"]
+material = SubResource("ShaderMaterial_m2jpk")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -1129.0
+offset_right = 1249.0
+offset_bottom = 3140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0fvxf")
+stretch_mode = 1
+
+[node name="Nuvole3" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Nuvole3"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(2550, 0)
+
+[node name="2" type="Sprite2D" parent="Nuvole3/ParallaxLayer"]
+modulate = Color(0.98386055, 0.87421817, 0.9638879, 1)
+texture_filter = 1
+position = Vector2(881, 386)
+scale = Vector2(2, 2)
+texture = ExtResource("2_cyp6n")
+
+[node name="Nuvole2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Nuvole2"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(2550, 0)
+
+[node name="2" type="Sprite2D" parent="Nuvole2/ParallaxLayer"]
+modulate = Color(1, 0.8, 1, 1)
+texture_filter = 1
+position = Vector2(881, 418)
+scale = Vector2(2, 2)
+texture = ExtResource("3_0fvxf")
+
+[node name="Nuvole" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Nuvole"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2550, 0)
+
+[node name="2" type="Sprite2D" parent="Nuvole/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(882, 459)
+scale = Vector2(2, 2)
+texture = ExtResource("4_m2jpk")
+
+[node name="Montagne3" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Montagne3"]
+position = Vector2(-1, -192)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Montagne3/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(401, 548)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gwhif")
+
+[node name="Montagne" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Montagne"]
+position = Vector2(-1, -200)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Montagne/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(401, 564)
+scale = Vector2(2, 2)
+texture = ExtResource("4_hankl")
+
+[node name="Nuvole4" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Nuvole4"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2550, 0)
+
+[node name="2" type="Sprite2D" parent="Nuvole4/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(882, 587)
+scale = Vector2(2, 2)
+texture = ExtResource("4_m2jpk")
+
+[node name="Montagne2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Montagne2"]
+position = Vector2(-1, -200)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Montagne2/ParallaxLayer"]
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+texture_filter = 1
+position = Vector2(401, 588)
+scale = Vector2(2, 2)
+texture = ExtResource("5_356xm")
+
+[node name="skybox2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="skybox2"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1248, 0)
+
+[node name="Logo" type="TextureRect" parent="skybox2/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.38039216)
+material = SubResource("ShaderMaterial_m2jpk")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -1129.0
+offset_right = 1249.0
+offset_bottom = 3140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8vcgh")
+stretch_mode = 1
+
+[node name="Clouds4" type="TextureRect" parent="skybox2/ParallaxLayer/Logo"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_q4vhb")
+layout_mode = 0
+offset_left = -21.0
+offset_top = 1251.0
+offset_right = 1227.0
+offset_bottom = 1491.0
+texture = ExtResource("11_0jpoy")
+
+[node name="Montagne4" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Montagne4"]
+position = Vector2(-1, -200)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(2550, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Montagne4/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.7529412)
+texture_filter = 1
+position = Vector2(881, 612)
+scale = Vector2(2, 2)
+texture = ExtResource("8_0fvxf")
+
+[node name="ParallaxBackground4" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground4"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground4/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(401, 784)
+scale = Vector2(2, 2)
+texture = ExtResource("4_k3hl1")
+
+[node name="ParallaxBackground5" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground5"]
+position = Vector2(-1, -120)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground5/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.5686275)
+texture_filter = 1
+position = Vector2(402, 144)
+scale = Vector2(2, 2)
+texture = ExtResource("5_lvlno")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c65cw8m63e11s"]
+
+[ext_resource type="Texture2D" uid="uid://buapuuqdldnx1" path="res://sprites/bigrock.png" id="1_fyo6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q30l"]
+size = Vector2(21.4536, 29.5775)
+
+[node name="big_rock" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 16.5)
+scale = Vector2(2, 0.96875)
+texture = ExtResource("1_fyo6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 25)
+scale = Vector2(1.07208, -0.473333)
+shape = SubResource("RectangleShape2D_4q30l")

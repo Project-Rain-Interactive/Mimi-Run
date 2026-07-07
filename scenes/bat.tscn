@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://crugqy7j4jt4a"]
+
+[ext_resource type="Script" uid="uid://cgyhxv5813fxy" path="res://codes/bat.gd" id="1_mslj3"]
+[ext_resource type="Texture2D" uid="uid://cib0lxy2tyxes" path="res://sprites/bat.png" id="2_tgdnc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl31f"]
+atlas = ExtResource("2_tgdnc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcd31"]
+atlas = ExtResource("2_tgdnc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yctak"]
+atlas = ExtResource("2_tgdnc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lysr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl31f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcd31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yctak")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqt42"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn63x"]
+size = Vector2(16, 10)
+
+[node name="Bird" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_mslj3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_5lysr")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.259763
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 0)
+shape = SubResource("RectangleShape2D_fqt42")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gn63x")

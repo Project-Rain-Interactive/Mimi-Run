@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://lyf4a3sklk1o"]
+
+[ext_resource type="FontFile" uid="uid://dpclw5gxajjcd" path="res://sprites/KiwiSoda.ttf" id="1_wuypg"]
+[ext_resource type="Texture2D" uid="uid://cqgbxn1caku54" path="res://sprites/play.png" id="2_chh6f"]
+[ext_resource type="Texture2D" uid="uid://1oqj4k8otxdn" path="res://Parallax/ParallaxSunset/Sunset/miim.png" id="3_5ysmq"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 8.0
+offset_right = 106.0
+offset_bottom = 54.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_wuypg")
+theme_override_font_sizes/font_size = 32
+text = "Points: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -266.0
+offset_right = 118.0
+offset_bottom = -212.0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_wuypg")
+theme_override_font_sizes/font_size = 32
+text = "Record: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartLabel" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(464, 288)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_chh6f")
+action = "jumping"
+
+[node name="Miim" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+position = Vector2(54, 62)
+scale = Vector2(0.35937497, 0.35253906)
+texture = ExtResource("3_5ysmq")

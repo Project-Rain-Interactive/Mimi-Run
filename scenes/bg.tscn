@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpkphu8qj137m"]
+
+[ext_resource type="PackedScene" uid="uid://cjax57omio5tn" path="res://scenes/parallax.tscn" id="1_pqw4o"]
+
+[node name="Bg" type="ParallaxBackground"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_pqw4o")]
+position = Vector2(337, 401)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1boja24bhl4n"]
+
+[ext_resource type="Texture2D" uid="uid://b1k3ct33ugrat" path="res://sprites/jump.png" id="1_21w2i"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="jump" type="TouchScreenButton" parent="."]
+visible = false
+modulate = Color(1, 0.8134079, 0.9442015, 0.5764706)
+position = Vector2(457.5, 259.5)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("1_21w2i")
+action = "jumping"
