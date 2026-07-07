@@ -1,0 +1,298 @@
+[gd_scene load_steps=26 format=3 uid="uid://1nviw114tmk2"]
+
+[ext_resource type="Texture2D" uid="uid://brwvvyl1vecis" path="res://Parallax/0001.png" id="1_mvfl2"]
+[ext_resource type="Shader" uid="uid://emokc5w342ey" path="res://codes/scroll.gdshader" id="2_cku6y"]
+[ext_resource type="Texture2D" uid="uid://8xjtwsg35l2b" path="res://Parallax/clouds3.png" id="3_mvfl2"]
+[ext_resource type="Texture2D" uid="uid://drgwcvy47drpp" path="res://Parallax/0.png" id="3_qvn4f"]
+[ext_resource type="Texture2D" uid="uid://dviullmmcggx4" path="res://codes/MenuBG/logo.png" id="4_0f2nu"]
+[ext_resource type="Texture2D" uid="uid://rr6fvbdxqc2u" path="res://Parallax/clouds2.png" id="4_qvn4f"]
+[ext_resource type="Texture2D" uid="uid://dpet2yse78dgf" path="res://Parallax/clouds1.png" id="5_g1omr"]
+[ext_resource type="Texture2D" uid="uid://os6uownygs3p" path="res://Parallax/2n2.png" id="5_kwfav"]
+[ext_resource type="FontFile" uid="uid://dpclw5gxajjcd" path="res://sprites/KiwiSoda.ttf" id="5_v15c5"]
+[ext_resource type="Texture2D" uid="uid://qgiy1yv3bd4" path="res://Parallax/3n.png" id="7_g1omr"]
+[ext_resource type="AudioStream" uid="uid://dsg346s7ugb0t" path="res://sound/menu_verb.mp3" id="11_mvfl2"]
+[ext_resource type="Texture2D" uid="uid://dkcmbty6rqyd3" path="res://sprites/focus.png" id="12_kwfav"]
+[ext_resource type="Texture2D" uid="uid://dj8ab163yafok" path="res://sprites/fullscreen.png" id="12_qvn4f"]
+[ext_resource type="FontFile" uid="uid://d0mwbnxhdj2j0" path="res://sprites/GrapeSoda.ttf" id="12_tr6y3"]
+[ext_resource type="AudioStream" uid="uid://dayo6u1bq6u1s" path="res://sound/ButtonMenù.wav" id="13_g1omr"]
+[ext_resource type="Texture2D" uid="uid://5n1tydwk53o1" path="res://sprites/button.png" id="13_n70vs"]
+[ext_resource type="Texture2D" uid="uid://cuy7es1fxnvnq" path="res://sprites/focusgrab.png" id="14_vj6np"]
+
+[sub_resource type="GDScript" id="GDScript_aafpw"]
+script/source = "extends Control
+
+func _on_credits_pressed():
+	get_tree().change_scene_to_file(\"res://main_menu/credits.tscn\")
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+	$\"ColorRect/ButtonMenù\".play()
+
+func _on_close_pressed() -> void:
+	get_tree().quit()
+
+func _ready():
+	$MenuVerb.play()
+	grab_focus()
+	
+
+func _on_play_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+	TransitionScreen.transition()
+	await TransitionScreen.on_transition_finished
+	$\"ColorRect/ButtonMenù\".play()
+
+func _on_fullscreen_pressed() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	$\"ColorRect/ButtonMenù\".play()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g1omr"]
+shader = ExtResource("2_cku6y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6a7yh"]
+shader = ExtResource("2_cku6y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n70vs"]
+texture = ExtResource("12_kwfav")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iri28"]
+texture = ExtResource("14_vj6np")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tr6y3"]
+texture = ExtResource("13_n70vs")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vj6np"]
+texture = ExtResource("14_vj6np")
+texture_margin_left = 32.0
+texture_margin_top = 16.0
+texture_margin_right = 32.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="Theme" id="Theme_tr6y3"]
+Button/fonts/font = ExtResource("12_tr6y3")
+Button/styles/focus = SubResource("StyleBoxTexture_n70vs")
+Button/styles/hover = SubResource("StyleBoxTexture_iri28")
+Button/styles/normal = SubResource("StyleBoxTexture_tr6y3")
+Button/styles/pressed = SubResource("StyleBoxTexture_vj6np")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_aafpw")
+
+[node name="Sky" type="TextureRect" parent="."]
+modulate = Color(0.9212707, 0.67263454, 0.71716917, 1)
+layout_mode = 0
+offset_top = -752.0
+offset_right = 1969.0
+offset_bottom = 7092.0
+texture = ExtResource("1_mvfl2")
+
+[node name="pattern" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.11764706)
+material = SubResource("ShaderMaterial_g1omr")
+layout_mode = 0
+offset_left = -8.0
+offset_top = -181.0
+offset_right = 2241.0
+offset_bottom = 1345.0
+texture = ExtResource("3_qvn4f")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="Clouds3" type="TextureRect" parent="."]
+self_modulate = Color(1, 0.85, 0.85, 1)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6a7yh")
+layout_mode = 0
+offset_top = 489.0
+offset_right = 1280.0
+offset_bottom = 558.0
+texture = ExtResource("3_mvfl2")
+
+[node name="Clouds4" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6a7yh")
+layout_mode = 0
+offset_top = 362.0
+offset_right = 1280.0
+offset_bottom = 538.0
+texture = ExtResource("5_kwfav")
+
+[node name="Clouds4" type="TextureRect" parent="Clouds4"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6a7yh")
+layout_mode = 0
+offset_left = 36.0
+offset_top = -217.0
+offset_right = 1316.0
+offset_bottom = -41.0
+texture = ExtResource("5_kwfav")
+
+[node name="Clouds2" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6a7yh")
+layout_mode = 0
+offset_top = 513.0
+offset_right = 1280.0
+offset_bottom = 582.0
+texture = ExtResource("4_qvn4f")
+
+[node name="Clouds" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6a7yh")
+layout_mode = 0
+offset_top = 537.0
+offset_right = 1280.0
+offset_bottom = 600.0
+texture = ExtResource("5_g1omr")
+
+[node name="3n2" type="Sprite2D" parent="."]
+position = Vector2(1199, 610)
+texture = ExtResource("7_g1omr")
+
+[node name="3n" type="Sprite2D" parent="."]
+position = Vector2(400, 610)
+texture = ExtResource("7_g1omr")
+
+[node name="Clouds5" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6a7yh")
+layout_mode = 0
+offset_top = 585.0
+offset_right = 1280.0
+offset_bottom = 648.0
+texture = ExtResource("5_g1omr")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.00003
+offset_top = -59.0
+offset_right = 1049.0
+offset_bottom = 547.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0f2nu")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 571.5
+offset_right = 509.0
+offset_bottom = 654.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_v15c5")
+theme_override_font_sizes/font_size = 16
+text = "PROJECT RAIN INTERACTIVE
+"
+
+[node name="MenuVerb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_mvfl2")
+pitch_scale = 0.8
+
+[node name="ColorRect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+theme = SubResource("Theme_tr6y3")
+
+[node name="play" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 363.6363
+offset_top = 333.63644
+offset_right = 538.18176
+offset_bottom = 397.63644
+theme_override_colors/font_color = Color(0.99999994, 0.15894872, 0.5491706, 1)
+theme_override_colors/font_focus_color = Color(0.95, 0.456, 0.456, 1)
+theme_override_font_sizes/font_size = 32
+text = "PLAY"
+expand_icon = true
+
+[node name="credits" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 363.6363
+offset_top = 395.45447
+offset_right = 538.18176
+offset_bottom = 459.45447
+theme_override_colors/font_color = Color(1, 0.16078432, 0.54901963, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.45490196, 0.45490196, 1)
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+
+[node name="close" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 363.6363
+offset_top = 458.1816
+offset_right = 538.18176
+offset_bottom = 522.1819
+theme_override_colors/font_color = Color(1, 0.16078432, 0.54901963, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.45490196, 0.45490196, 1)
+theme_override_font_sizes/font_size = 32
+text = "CLOSE"
+
+[node name="Logo2" type="Sprite2D" parent="ColorRect"]
+position = Vector2(455.45444, 377.27267)
+scale = Vector2(0.9090909, 0.9090909)
+texture = ExtResource("4_0f2nu")
+region_enabled = true
+region_rect = Rect2(381, 434.5, 277, 80)
+
+[node name="fullscreen" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 807.2727
+offset_top = 6.3636365
+offset_right = 900.36346
+offset_bottom = 79.09091
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/fullscreen"]
+position = Vector2(46.36371, 35.454556)
+scale = Vector2(2, 2)
+texture = ExtResource("12_qvn4f")
+
+[node name="ButtonMenù" type="AudioStreamPlayer" parent="ColorRect"]
+stream = ExtResource("13_g1omr")
+
+[connection signal="pressed" from="ColorRect/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="ColorRect/close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="ColorRect/fullscreen" to="." method="_on_fullscreen_pressed"]

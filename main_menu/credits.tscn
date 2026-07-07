@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://d4erc6v8e6d7w"]
+
+[ext_resource type="Script" uid="uid://hdjgpjs4ea3v" path="res://codes/credits.gd" id="1_h0xhq"]
+[ext_resource type="Texture2D" uid="uid://d18ysc7751eyb" path="res://Parallax/1.png" id="2_85ul3"]
+[ext_resource type="Shader" uid="uid://emokc5w342ey" path="res://codes/scroll.gdshader" id="3_4rd3s"]
+[ext_resource type="Texture2D" uid="uid://bsut0rjejraij" path="res://codes/MenuBG/Clouds.png" id="4_kpobe"]
+[ext_resource type="FontFile" uid="uid://dpclw5gxajjcd" path="res://sprites/KiwiSoda.ttf" id="5_etp56"]
+[ext_resource type="Texture2D" uid="uid://nurflf6obqdk" path="res://sprites/comeback.png" id="6_28qkj"]
+[ext_resource type="AudioStream" uid="uid://qngserbco6ho" path="res://sound/mimi_slowed.mp3" id="8_chvih"]
+[ext_resource type="Texture2D" uid="uid://drgwcvy47drpp" path="res://Parallax/0.png" id="8_xcjv1"]
+[ext_resource type="Texture2D" uid="uid://os6uownygs3p" path="res://Parallax/2n2.png" id="9_chvih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7ygo"]
+shader = ExtResource("3_4rd3s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chvih"]
+shader = ExtResource("3_4rd3s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gt26g"]
+shader = ExtResource("3_4rd3s")
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h0xhq")
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1969.0
+offset_bottom = 601.0
+texture = ExtResource("2_85ul3")
+
+[node name="Clouds2" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_p7ygo")
+layout_mode = 0
+offset_left = -1.0
+offset_top = -69.0
+offset_right = 1599.0
+offset_bottom = 107.0
+texture = ExtResource("4_kpobe")
+flip_v = true
+
+[node name="Clouds" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_p7ygo")
+layout_mode = 0
+offset_top = 496.0
+offset_right = 1600.0
+offset_bottom = 672.0
+texture = ExtResource("4_kpobe")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 944.0
+offset_bottom = 593.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_etp56")
+theme_override_font_sizes/font_size = 32
+text = "Credits
+
+Lux (C4ll.me_Lux): Sprites, Graphic design and Coding
+Jaskyrat: Music and SFX
+Frah: Music
+
+Special thanks:
+
+Brackey on youtube
+Coding with Russ on youtube
+MamaZaNeko on Itch.io
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(933, 534)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("6_28qkj")
+
+[node name="pattern" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.11764706)
+material = SubResource("ShaderMaterial_chvih")
+layout_mode = 0
+offset_left = -8.0
+offset_top = -181.0
+offset_right = 2241.0
+offset_bottom = 1345.0
+texture = ExtResource("8_xcjv1")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="MimiSlowed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_chvih")
+
+[node name="Clouds4" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gt26g")
+layout_mode = 0
+offset_top = 362.0
+offset_right = 1280.0
+offset_bottom = 538.0
+texture = ExtResource("9_chvih")
+
+[node name="Clouds4" type="TextureRect" parent="Clouds4"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gt26g")
+layout_mode = 0
+offset_left = 36.0
+offset_top = -217.0
+offset_right = 1316.0
+offset_bottom = -41.0
+texture = ExtResource("9_chvih")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
